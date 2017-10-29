@@ -1,15 +1,20 @@
 import { Component, OnInit } from '@angular/core';
+import {FeedService} from '../../services/feed.service';
+import {Observable} from 'rxjs/Observable';
+import {Post} from '../../models/post';
 
 @Component({
   selector: 'feed',
   template: `
     <div  fxLayout="row" fxLayoutAlign=" stretch" class="container">
       
-      <div fxFlex="65" fxFlexAlign="stretch" class="timeline">
+      <div fxLayout="column" fxLayoutAlign="start center" fxFlex="65" fxFlex.lt-sm="100" fxFlexAlign="stretch" class="timeline">
+        
+        <post *ngFor="let post of posts$ | async" [post]="post"></post>
         
       </div>
       
-      <div fxLayout="column" fxFlexAlign="stretch" fxLayoutAlign="space-between stretch" fxFlex="35" class="sidebar">
+      <div [fxShow.lt-sm]="false" fxLayout="column" fxFlexAlign="stretch" fxLayoutAlign="space-between stretch" fxFlex="35" class="sidebar">
         
         <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center" fxFlex="35"  class="profile">
           
@@ -109,7 +114,8 @@ import { Component, OnInit } from '@angular/core';
         background: linear-gradient(#1D1C47, #5B3386, #1D1C47);
       }
       .timeline{
-        overflow-x: scroll;
+        padding: 15px;
+        overflow-y: scroll;
       }
       
       .sidebar{
@@ -136,9 +142,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FeedComponent implements OnInit {
 
-  constructor() { }
+  posts$: Observable<Post[]>;
+
+  constructor(private feed: FeedService) { }
 
   ngOnInit() {
+    this.posts$ = this.feed.getFeed();
   }
 
 }

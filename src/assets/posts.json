@@ -1,0 +1,30 @@
+{
+  "data": [
+    {
+      "id": "1",
+      "type": "image",
+      "resUrl": "/assets/images/post1.jpg",
+      "description": "my first image post",
+      "userId": "1",
+      "likeCount": 1,
+      "commentCount": 0,
+      "user": {
+        "id": 1,
+        "name": "Kyle"
+      }
+    },
+    {
+      "id": "1",
+      "type": "text",
+      "text": "my first text post",
+      "description": "my first text post",
+      "userId": "1",
+      "likeCount": 1,
+      "commentCount": 0,
+      "user": {
+        "id": 1,
+        "name": "Kyle"
+      }
+    }
+  ]
+}

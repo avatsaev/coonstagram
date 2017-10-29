@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {FeedComponent} from './views/feed/feed.component';
 import { PostComponent } from './components/post/post.component';
+import {HttpClientModule} from '@angular/common/http';
+import {FeedService} from './services/feed.service';
 
 @NgModule({
   declarations: [
@@ -16,9 +18,10 @@ import { PostComponent } from './components/post/post.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [FeedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
